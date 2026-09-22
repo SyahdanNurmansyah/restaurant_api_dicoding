@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:restaurant_api/styles/typography/restaurant_text_styles.dart';
+
+class Headers extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<Headers> createState() => _HeadersState();
+}
+
+class _HeadersState extends State<Headers> {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shadowColor: Colors.transparent,
+
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          mainAxisAlignment: .spaceBetween,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.grey,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Icon(Icons.restaurant_menu, size: 18),
+                    ),
+                  ),
+
+                  Flexible(
+                    child: Text(
+                      'Halo, Syahdan Nurmansyah',
+                      style: RestaurantTextStyles.titleMedium,
+                    ),
+                  ),
+
+                  IconButton(onPressed: () {}, icon: Icon(Icons.light_mode)),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

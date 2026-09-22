@@ -14,15 +14,23 @@ class Restaurants {
     required this.city,
     required this.rating,
   });
-
-  factory Restaurants.fromJson(Map<String, dynamic> json) {
-    return Restaurants(
-      id: json["id"],
-      name: json["name"],
-      description: json["description"],
-      pictureId: json["pictureId"],
-      city: json["city"],
-      rating: json["rating"],
-    );
-  }
 }
+
+final List<Restaurants> restaurantList = [
+  Restaurants(
+    id: "rqdv5juczeskfw1e867",
+    name: "Melting Pot",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ...",
+    pictureId: "14",
+    city: "Medan",
+    rating: 4.2,
+  ),
+  Restaurants(
+    id: "s1knt6za9kkfw1e867",
+    name: "Kafe Kita",
+    description: "Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. ...",
+    pictureId: "25",
+    city: "Gorontalo",
+    rating: 4,
+  ),
+];
