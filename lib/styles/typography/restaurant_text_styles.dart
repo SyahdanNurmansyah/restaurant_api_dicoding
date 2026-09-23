@@ -54,16 +54,16 @@ class RestaurantTextStyles {
   /// titleLarge Text Style
   static TextStyle titleLarge = _commonStyle.copyWith(
     fontSize: 22,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     // height: 1.2,
     // letterSpacing: 1.2,
   );
 
   /// titleMedium Text Style
   static TextStyle titleMedium = _commonStyle.copyWith(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    //  height: 1.2,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    height: 1,
     //  letterSpacing: 1.2,
   );
 
@@ -78,7 +78,7 @@ class RestaurantTextStyles {
   /// bodyLargeBold Text Style
   static TextStyle bodyLargeBold = _commonStyle.copyWith(
     fontSize: 16,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     height: 1.56,
   );
 

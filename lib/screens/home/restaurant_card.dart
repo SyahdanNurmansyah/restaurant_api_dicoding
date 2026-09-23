@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_api/models/restaurant.dart';
+import 'package:restaurant_api/models/restaurants.dart';
 import 'package:restaurant_api/styles/typography/restaurant_text_styles.dart';
 
 class RestaurantCard extends StatelessWidget {
@@ -18,7 +18,7 @@ class RestaurantCard extends StatelessWidget {
       child: Card(
         shadowColor: Colors.transparent,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(12),
           child: Row(
             crossAxisAlignment: .start,
             mainAxisAlignment: .start,
@@ -47,7 +47,7 @@ class RestaurantCard extends StatelessWidget {
                   children: [
                     Text(
                       restaurants.name,
-                      style: RestaurantTextStyles.titleMedium,
+                      style: RestaurantTextStyles.bodyLargeBold,
                     ),
 
                     const SizedBox(height: 12),
@@ -55,22 +55,16 @@ class RestaurantCard extends StatelessWidget {
                     Row(
                       spacing: 8,
                       children: [
-                        Icon(Icons.pin_drop, size: 16),
-                        Text(
-                          restaurants.city,
-                          style: RestaurantTextStyles.bodyLargeRegular,
-                        ),
+                        Icon(Icons.store_outlined, size: 16),
+                        Text(restaurants.city),
                       ],
                     ),
 
                     Row(
                       spacing: 8,
                       children: [
-                        Icon(Icons.star, size: 16, color: Colors.amber),
-                        Text(
-                          restaurants.rating.toString(),
-                          style: RestaurantTextStyles.bodyLargeRegular,
-                        ),
+                        Icon(Icons.star, size: 18, color: Colors.amber),
+                        Text(restaurants.rating.toString()),
                       ],
                     ),
                   ],
