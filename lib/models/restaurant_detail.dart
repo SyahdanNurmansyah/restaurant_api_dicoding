@@ -12,7 +12,7 @@ class RestaurantDetail {
   final List<Categories> categories;
   final Menus menus;
   final num rating;
-  // final List<CustomerReview> customerReviews;
+  final List<CustomerReview> customerReviews;
 
   RestaurantDetail({
     required this.id,
@@ -24,7 +24,7 @@ class RestaurantDetail {
     required this.categories,
     required this.menus,
     required this.rating,
-    // required this.customerReviews,
+    required this.customerReviews,
   });
 
   factory RestaurantDetail.fromJson(Map<String, dynamic> json) {
@@ -41,9 +41,9 @@ class RestaurantDetail {
 
       menus: Menus.fromJson(json["menus"]),
       rating: json["rating"],
-      // customerReviews: (json["customerReviews"] as List)
-      //     .map((item) => CustomerReview.fromJson(item))
-      //     .toList(),
+      customerReviews: (json["customerReviews"] as List)
+          .map((item) => CustomerReview.fromJson(item))
+          .toList(),
     );
   }
 }

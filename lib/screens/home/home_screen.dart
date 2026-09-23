@@ -63,22 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
       ),
-      // body: ListView.builder(
-      //   itemCount: restaurantList.length,
-      //   itemBuilder: (context, index) {
-      //     final restaurant = restaurantList[index];
-      //     return RestaurantCard(
-      //       restaurants: restaurantList[index],
-      //       onTap: () {
-      //         Navigator.pushNamed(
-      //           context,
-      //           NavigatorRoutes.detailRoute.name,
-      //           arguments: restaurant,
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
     );
   }
 }

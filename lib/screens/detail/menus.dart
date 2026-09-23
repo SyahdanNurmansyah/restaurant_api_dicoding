@@ -12,6 +12,9 @@ class Menus extends StatelessWidget {
       ...restaurant.menus.foods.map((food) => food.name),
       ...restaurant.menus.drinks.map((drink) => drink.name),
     ];
+    // final categories = [
+    //   ...restaurant.categories.map((category) => category.name),
+    // ];
     return SizedBox(
       height: 180,
       child: ListView.builder(
@@ -20,6 +23,7 @@ class Menus extends StatelessWidget {
         itemCount: menus.length,
         itemBuilder: (context, index) {
           final menuName = menus[index];
+          // final categoryName = categories[index];
           return Row(
             children: [
               ConstrainedBox(
@@ -49,23 +53,23 @@ class Menus extends StatelessWidget {
                             crossAxisAlignment: .start,
                             mainAxisAlignment: .start,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 4,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                                child: Text(
-                                  'Kategori',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 8,
-                                  ),
-                                ),
-                              ),
+                              // Container(
+                              //   padding: const EdgeInsets.symmetric(
+                              //     horizontal: 4,
+                              //     vertical: 2,
+                              //   ),
+                              //   decoration: BoxDecoration(
+                              //     borderRadius: BorderRadius.circular(4),
+                              //     color: Theme.of(context).colorScheme.primary,
+                              //   ),
+                              //   child: Text(
+                              //     'categoryName',
+                              //     style: TextStyle(
+                              //       color: Colors.white,
+                              //       fontSize: 8,
+                              //     ),
+                              //   ),
+                              // ),
                               Text(
                                 menuName,
                                 maxLines: 1,

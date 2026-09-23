@@ -33,9 +33,28 @@ class RestaurantCard extends StatelessWidget {
                     minHeight: 100,
                     maxHeight: 100,
                   ),
-                  child: Image.asset(
-                    'assets/images/restaurant1.jpg',
+                  child: Image.network(
+                    'https://restaurant-api.dicoding.dev/images/small/${restaurants.pictureId}',
                     fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).dividerColor,
+                          backgroundColor: Theme.of(context).hoverColor,
+                        ),
+                      );
+                    },
+
+                    errorBuilder: (context, error, stackTrace) {
+                      return Center(
+                        child: Icon(
+                          Icons.image_not_supported_rounded,
+                          size: 22,
+                          color: Theme.of(context).hoverColor,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

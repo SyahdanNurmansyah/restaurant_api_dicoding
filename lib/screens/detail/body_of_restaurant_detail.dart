@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_api/models/restaurant_detail.dart';
+import 'package:restaurant_api/screens/detail/categories.dart';
+import 'package:restaurant_api/screens/detail/customer_review_card.dart';
 import 'package:restaurant_api/screens/detail/menus.dart';
 import 'package:restaurant_api/styles/typography/restaurant_text_styles.dart';
 
@@ -16,9 +18,34 @@ class BodyOfTourismDetail extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              'assets/images/restaurant2.jpg',
+            child: Image.network(
+              'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
               fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).dividerColor,
+                    backgroundColor: Theme.of(context).hoverColor,
+                  ),
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Column(
+                  spacing: 12,
+                  children: [
+                    Icon(
+                      Icons.image_not_supported_rounded,
+                      size: 24,
+                      color: Theme.of(context).hoverColor,
+                    ),
+                    Text(
+                      'Failed to load image',
+                      style: TextStyle(color: Theme.of(context).hoverColor),
+                    ),
+                  ],
+                );
+              },
             ),
           ),
 
@@ -115,6 +142,10 @@ class BodyOfTourismDetail extends StatelessWidget {
             style: Theme.of(context).textTheme.titleMedium,
           ),
           Menus(restaurant: restaurant),
+
+          const SizedBox(height: 12),
+          Text('Customer Review', style: RestaurantTextStyles.titleMedium),
+          CustomerReviewCard(restaurantDetail: restaurant),
         ],
       ),
     );
