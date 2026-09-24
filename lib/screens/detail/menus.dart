@@ -43,15 +43,14 @@ class Menus extends StatelessWidget {
                       children: [
                         Center(
                           child: Icon(
-                            Icons.restaurant_menu,
+                            Icons.restaurant_menu_rounded,
                             color: Theme.of(context).hoverColor,
                             size: 60,
                           ),
                         ),
                         Expanded(
                           child: Column(
-                            crossAxisAlignment: .start,
-                            mainAxisAlignment: .start,
+                            mainAxisAlignment: .end,
                             children: [
                               // Container(
                               //   padding: const EdgeInsets.symmetric(
@@ -74,6 +73,14 @@ class Menus extends StatelessWidget {
                                 menuName,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  color: Theme.of(context).dividerColor,
+
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall
+                                      ?.fontSize,
+                                ),
                               ),
                             ],
                           ),

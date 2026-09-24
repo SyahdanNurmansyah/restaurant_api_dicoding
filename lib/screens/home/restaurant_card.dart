@@ -38,10 +38,14 @@ class RestaurantCard extends StatelessWidget {
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: Theme.of(context).dividerColor,
-                          backgroundColor: Theme.of(context).hoverColor,
+                      return Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            strokeWidth: 0.8,
+                            color: Theme.of(context).dividerColor,
+                            backgroundColor: Theme.of(context).hoverColor,
+                          ),
                         ),
                       );
                     },
@@ -82,8 +86,24 @@ class RestaurantCard extends StatelessWidget {
                     Row(
                       spacing: 8,
                       children: [
-                        Icon(Icons.star, size: 18, color: Colors.amber),
+                        Icon(
+                          restaurants.rating == 0
+                              ? Icons.star_border
+                              : restaurants.rating >= 5
+                              ? Icons.star
+                              : Icons.star_half,
+                          color: Colors.amber,
+                          size: 18,
+                        ),
                         Text(restaurants.rating.toString()),
+                      ],
+                    ),
+
+                    Row(
+                      spacing: 8,
+                      children: [
+                        Icon(Icons.access_time, size: 16),
+                        Text('Setiap hari'),
                       ],
                     ),
                   ],

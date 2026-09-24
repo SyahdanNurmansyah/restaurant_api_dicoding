@@ -21,10 +21,12 @@ class _HeadersState extends State<Headers> {
           children: [
             Expanded(
               child: Row(
+                spacing: 12,
+                mainAxisAlignment: .spaceBetween,
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: Colors.grey,
+                    backgroundColor: Theme.of(context).cardColor,
                     child: Padding(
                       padding: const EdgeInsets.all(4),
                       child: Icon(Icons.restaurant_menu, size: 18),
@@ -32,9 +34,20 @@ class _HeadersState extends State<Headers> {
                   ),
 
                   Flexible(
-                    child: Text(
-                      'Halo, Syahdan Nurmansyah',
-                      style: RestaurantTextStyles.titleMedium,
+                    child: Column(
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .start,
+
+                      children: [
+                        Text(
+                          'Halo,',
+                          style: RestaurantTextStyles.bodyLargeMedium,
+                        ),
+                        Text(
+                          'Syahdan Nurmansyah',
+                          style: RestaurantTextStyles.bodyLargeBold,
+                        ),
+                      ],
                     ),
                   ),
 

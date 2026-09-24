@@ -14,7 +14,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
+      theme: ThemeData(),
+      darkTheme: ThemeData.dark(),
       initialRoute: NavigatorRoutes.mainRoute.name,
       routes: {
         NavigatorRoutes.mainRoute.name: (context) => const HomeScreen(),

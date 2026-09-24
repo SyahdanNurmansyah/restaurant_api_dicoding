@@ -37,7 +37,12 @@ class _DetailScreenState extends State<DetailScreen> {
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.green,
+                    backgroundColor: Colors.lightGreen,
+                  ),
+                );
               case ConnectionState.done:
                 if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
