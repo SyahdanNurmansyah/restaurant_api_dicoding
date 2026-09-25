@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:restaurant_api/models/customer_review.dart';
 import 'package:restaurant_api/static/customer_review_request.dart';
 import 'package:restaurant_api/static/restaurant_detail_response.dart';
 import 'package:restaurant_api/static/restaurant_list_response.dart';

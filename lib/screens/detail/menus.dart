@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_api/models/restaurant_detail.dart';
-import 'package:restaurant_api/styles/typography/restaurant_text_styles.dart';
 
 class Menus extends StatelessWidget {
   final RestaurantDetail restaurant;
@@ -18,9 +17,8 @@ class Menus extends StatelessWidget {
     return SizedBox(
       height: 180,
       child: ListView.builder(
-        // shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
         itemCount: menus.length,
+        scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final menuName = menus[index];
           // final categoryName = categories[index];

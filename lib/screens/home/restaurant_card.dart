@@ -33,32 +33,36 @@ class RestaurantCard extends StatelessWidget {
                     minHeight: 100,
                     maxHeight: 100,
                   ),
-                  child: Image.network(
-                    'https://restaurant-api.dicoding.dev/images/small/${restaurants.pictureId}',
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            strokeWidth: 0.8,
-                            color: Theme.of(context).dividerColor,
-                            backgroundColor: Theme.of(context).hoverColor,
+                  child: Hero(
+                    tag: restaurants.pictureId,
+                    curve: Curves.easeIn,
+                    child: Image.network(
+                      'https://restaurant-api.dicoding.dev/images/small/${restaurants.pictureId}',
+                      fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              strokeWidth: 0.8,
+                              color: Theme.of(context).dividerColor,
+                              backgroundColor: Theme.of(context).hoverColor,
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
 
-                    errorBuilder: (context, error, stackTrace) {
-                      return Center(
-                        child: Icon(
-                          Icons.image_not_supported_rounded,
-                          size: 22,
-                          color: Theme.of(context).hoverColor,
-                        ),
-                      );
-                    },
+                      errorBuilder: (context, error, stackTrace) {
+                        return Center(
+                          child: Icon(
+                            Icons.image_not_supported_rounded,
+                            size: 22,
+                            color: Theme.of(context).hoverColor,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),

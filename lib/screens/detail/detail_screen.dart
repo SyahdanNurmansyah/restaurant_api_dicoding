@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:restaurant_api/data/api/api_services.dart';
-import 'package:restaurant_api/models/restaurants.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_api/providers/detail/restaurant_detail_provider.dart';
 import 'package:restaurant_api/screens/detail/body_of_restaurant_detail.dart';
-import 'package:restaurant_api/static/restaurant_detail_response.dart';
-import 'package:restaurant_api/styles/typography/restaurant_text_styles.dart';
+import 'package:restaurant_api/static/restaurant_detail_result_state.dart';
 
 class DetailScreen extends StatefulWidget {
   final String restaurantId;
@@ -16,15 +15,14 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  // final Completer<Restaurants> _completerRestaurant = Completer<Restaurants>();
-  late final Future<RestaurantDetailResponse> _futureRestaurantDetail;
-
   @override
   void initState() {
     super.initState();
-    _futureRestaurantDetail = ApiServices().getRestaurantDetail(
-      widget.restaurantId,
-    );
+    Future.microtask(() {
+      context.read<RestaurantDetailProvider>().fetchRestaurantDetail(
+        widget.restaurantId,
+      );
+    });
   }
 
   @override
@@ -32,27 +30,24 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Detail Screen')),
       body: SafeArea(
-        child: FutureBuilder(
-          future: _futureRestaurantDetail,
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: Colors.green,
-                    backgroundColor: Colors.lightGreen,
-                  ),
-                );
-              case ConnectionState.done:
-                if (snapshot.hasError) {
-                  return Center(child: Text(snapshot.error.toString()));
-                }
+        child: Consumer<RestaurantDetailProvider>(
+          builder: (context, value, child) {
+            return switch (value.resultState) {
+              RestaurantDetailLoadingState() => Center(
+                child: CircularProgressIndicator(
+                  color: Colors.green,
+                  backgroundColor: Colors.lightGreen,
+                ),
+              ),
 
-                final restaurantData = snapshot.data!.restaurant;
-                return BodyOfTourismDetail(restaurant: restaurantData);
-              default:
-                return const SizedBox();
-            }
+              RestaurantDetailLoadedState(data: var restaurantDetail) =>
+                BodyOfTourismDetail(restaurant: restaurantDetail),
+
+              RestaurantDetailErrorState(error: var message) => Center(
+                child: Text(message),
+              ),
+              _ => const SizedBox(),
+            };
           },
         ),
       ),

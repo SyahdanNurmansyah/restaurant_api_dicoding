@@ -17,38 +17,42 @@ class BodyOfTourismDetail extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
-              'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) return child;
-                return Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      strokeWidth: 0.8,
-                      color: Theme.of(context).dividerColor,
-                      backgroundColor: Theme.of(context).hoverColor,
+            child: Hero(
+              tag: restaurant.pictureId,
+              reverseCurve: Curves.easeInOut,
+              child: Image.network(
+                'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 0.8,
+                        color: Theme.of(context).dividerColor,
+                        backgroundColor: Theme.of(context).hoverColor,
+                      ),
                     ),
-                  ),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return Column(
-                  spacing: 12,
-                  children: [
-                    Icon(
-                      Icons.image_not_supported_rounded,
-                      size: 24,
-                      color: Theme.of(context).hoverColor,
-                    ),
-                    Text(
-                      'Failed to load image',
-                      style: TextStyle(color: Theme.of(context).hoverColor),
-                    ),
-                  ],
-                );
-              },
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Column(
+                    spacing: 12,
+                    children: [
+                      Icon(
+                        Icons.image_not_supported_rounded,
+                        size: 24,
+                        color: Theme.of(context).hoverColor,
+                      ),
+                      Text(
+                        'Failed to load image',
+                        style: TextStyle(color: Theme.of(context).hoverColor),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
 

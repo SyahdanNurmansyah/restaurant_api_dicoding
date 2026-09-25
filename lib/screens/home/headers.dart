@@ -22,7 +22,6 @@ class _HeadersState extends State<Headers> {
             Expanded(
               child: Row(
                 spacing: 12,
-                mainAxisAlignment: .spaceBetween,
                 children: [
                   CircleAvatar(
                     radius: 20,
@@ -45,16 +44,15 @@ class _HeadersState extends State<Headers> {
                         ),
                         Text(
                           'Syahdan Nurmansyah',
-                          style: RestaurantTextStyles.bodyLargeBold,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ],
                     ),
                   ),
-
-                  IconButton(onPressed: () {}, icon: Icon(Icons.light_mode)),
                 ],
               ),
             ),
+            IconButton(onPressed: () {}, icon: Icon(Icons.light_mode)),
           ],
         ),
       ),
