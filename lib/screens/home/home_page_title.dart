@@ -11,7 +11,6 @@ class HomePageTitle extends StatelessWidget {
         TextSpan(
           text: 'Temukan ',
           style: TextStyle(
-            // color: Theme.of(context).dividerColor,
             fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
             height: 1.2,
           ),
@@ -29,9 +28,8 @@ class HomePageTitle extends StatelessWidget {
             ),
 
             TextSpan(
-              text: 'terdekat dan nyaman.',
+              text: 'terdekat Anda.',
               style: TextStyle(
-                // color: Colors.grey,
                 fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                 height: 1.2,
               ),

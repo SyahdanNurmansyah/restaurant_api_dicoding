@@ -22,15 +22,18 @@ class CustomerReviewProvider extends ChangeNotifier {
 
       debugPrint('POST REVIEW BERHASIL');
       debugPrint('message: ${result.message}');
-      debugPrint('jumlah review: ${result.customerReviews.length}');
+      debugPrint('jumlah review: ${result.customerReviews}');
 
       if (result.error) {
         _resultState = CustomerReviewErrorState(result.message);
-        notifyListeners();
       } else {
         _resultState = CustomerReviewLoadedState(result);
-        notifyListeners();
       }
+      notifyListeners();
+      Future.delayed(const Duration(seconds: 2), () {
+        _resultState = CustomerReviewNoneState();
+        notifyListeners();
+      });
     } on Exception catch (e) {
       debugPrint('POST REVIEW GAGAL: $e');
       _resultState = CustomerReviewErrorState(e.toString());

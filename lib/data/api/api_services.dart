@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:restaurant_api/static/customer_review_request.dart';
 import 'package:restaurant_api/static/restaurant_detail_response.dart';
 import 'package:restaurant_api/static/restaurant_list_response.dart';
@@ -35,10 +36,11 @@ class ApiServices {
   ) async {
     final request = await http.post(
       Uri.parse('$_baseUrl/review'),
-      headers: {'Context-type': 'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'id': id, 'name': name, 'review': review}),
     );
-
+    debugPrint('STATUS: ${request.statusCode}');
+    debugPrint('BODY: ${request.body}');
     if (request.statusCode == 201) {
       return CustomerReviewRequest.fromJson(jsonDecode(request.body));
     } else {

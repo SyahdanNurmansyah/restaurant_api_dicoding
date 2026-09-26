@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 
-class CustomerReviewForm extends StatefulWidget {
+class CustomerReviewForm extends StatelessWidget {
   final String label;
   final String hint;
   final int maxLines;
-  final TextEditingController _controller;
+  final TextEditingController controller;
   final String? Function(String?)? validator;
 
   const CustomerReviewForm({
     super.key,
     required this.label,
     required this.hint,
-    required this._controller,
+    required this.controller,
     this.validator,
     required this.maxLines,
   });
 
-  @override
-  State<CustomerReviewForm> createState() => _CustomerReviewFormState();
-}
-
-class _CustomerReviewFormState extends State<CustomerReviewForm> {
-  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,16 +24,16 @@ class _CustomerReviewFormState extends State<CustomerReviewForm> {
       child: Column(
         children: [
           TextFormField(
-            maxLines: widget.maxLines,
-            controller: _controller,
-            validator: widget.validator,
+            maxLines: maxLines,
+            controller: controller,
+            validator: validator,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              hintText: widget.hint,
-              labelText: widget.label,
+              hintText: hint,
+              labelText: label,
               labelStyle: TextStyle(color: Colors.grey.shade600),
               hintStyle: TextStyle(fontSize: 12, color: Colors.grey.shade400),
-              filled: true,
+
               fillColor: Theme.of(context).canvasColor,
 
               border: OutlineInputBorder(

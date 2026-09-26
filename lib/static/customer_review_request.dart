@@ -15,13 +15,9 @@ class CustomerReviewRequest {
     return CustomerReviewRequest(
       error: json["error"],
       message: json["message"],
-      customerReviews: json["customerReviews"] != null
-          ? List<CustomerReview>.from(
-              json["customerReview"]!.map(
-                (review) => CustomerReview.fromJson(review),
-              ),
-            )
-          : <CustomerReview>[],
+      customerReviews: (json['customerReviews'] as List)
+          .map((review) => CustomerReview.fromJson(review))
+          .toList(),
     );
   }
 }
