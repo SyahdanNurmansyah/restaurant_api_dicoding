@@ -33,9 +33,7 @@ class CustomerReviewForm extends StatelessWidget {
               labelText: label,
               labelStyle: TextStyle(color: Colors.grey.shade600),
               hintStyle: TextStyle(fontSize: 12, color: Colors.grey.shade400),
-
               fillColor: Theme.of(context).canvasColor,
-
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

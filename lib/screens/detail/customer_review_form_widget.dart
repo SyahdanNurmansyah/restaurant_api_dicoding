@@ -84,12 +84,15 @@ class CustomerReviewFormWidget extends StatelessWidget {
                   child: CircularProgressIndicator(color: Colors.white),
                 ),
 
-                CustomerReviewErrorState(error: var message) => Text(message),
-                CustomerReviewLoadedState(:final data) => Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
+                CustomerReviewErrorState(error: var message) => Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text(message),
+                ),
+                CustomerReviewLoadedState(data: var data) => Padding(
+                  padding: const EdgeInsets.only(top: 8),
                   child: Text(data.message),
                 ),
-                _ => const SizedBox(),
+                CustomerReviewNoneState() => const SizedBox(),
               };
             },
           ),

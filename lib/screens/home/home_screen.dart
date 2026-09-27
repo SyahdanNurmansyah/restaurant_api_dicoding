@@ -4,8 +4,11 @@ import 'package:restaurant_api/providers/home/restaurant_list_provider.dart';
 import 'package:restaurant_api/screens/home/headers.dart';
 import 'package:restaurant_api/screens/home/home_page_title.dart';
 import 'package:restaurant_api/screens/home/restaurant_card.dart';
+import 'package:restaurant_api/screens/home/restaurant_list_screen.dart';
+import 'package:restaurant_api/static/Sliver_header_delegate.dart';
 import 'package:restaurant_api/static/navigator_routes.dart';
 import 'package:restaurant_api/static/restaurant_list_result_state.dart';
+import 'package:restaurant_api/widgets/custom_search_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,54 +29,25 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(child: Headers()),
-            SliverToBoxAdapter(child: HomePageTitle()),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(child: Headers()),
 
-            SliverToBoxAdapter(
-              child: Consumer<RestaurantListProvider>(
-                builder: (context, value, child) {
-                  return switch (value.resultState) {
-                    RestaurantListLoadingState() => const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.green,
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                    ),
+          SliverToBoxAdapter(child: HomePageTitle()),
+          _customSearchBar(),
+          SliverToBoxAdapter(child: RestaurantListScreen()),
+        ],
+      ),
+    );
+  }
 
-                    RestaurantListLoadedState(data: var restaurantList) =>
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: restaurantList.length,
-                        itemBuilder: (context, index) {
-                          final restaurant = restaurantList[index];
-
-                          return RestaurantCard(
-                            restaurants: restaurant,
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                NavigatorRoutes.detailRoute.name,
-                                arguments: restaurant.id,
-                              );
-                            },
-                          );
-                        },
-                      ),
-
-                    RestaurantListErrorState(error: var message) => Center(
-                      child: Text(message),
-                    ),
-                    _ => const SizedBox(),
-                  };
-                },
-              ),
-            ),
-          ],
-        ),
+  SliverPersistentHeader _customSearchBar() {
+    return SliverPersistentHeader(
+      pinned: true,
+      delegate: SliverHeaderDelegate(
+        child: CustomSearchBarWidget(onChanged: (value) {}),
+        minHeight: 60,
+        maxHeight: 60,
       ),
     );
   }

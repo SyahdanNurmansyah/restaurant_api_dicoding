@@ -100,25 +100,33 @@ class BodyOfTourismDetail extends StatelessWidget {
                   ),
 
                   Column(
+                    spacing: 8,
                     crossAxisAlignment: .start,
                     children: [
                       Row(
-                        spacing: 4,
-                        children: [
-                          Icon(
-                            restaurant.rating == 0
-                                ? Icons.star_border
-                                : restaurant.rating >= 5
-                                ? Icons.star
-                                : Icons.star_half,
-                            color: Colors.amber,
-                            size: 20,
-                          ),
-                          Text('${restaurant.customerReviews.length} (Ulasan)'),
-                        ],
-
-                        // ],
+                        children: List.generate(5, (index) {
+                          if (restaurant.rating >= index + 1) {
+                            return const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                              size: 16,
+                            );
+                          } else if (restaurant.rating > index) {
+                            return const Icon(
+                              Icons.star_half,
+                              color: Colors.amber,
+                              size: 16,
+                            );
+                          } else {
+                            return const Icon(
+                              Icons.star_border,
+                              color: Colors.amber,
+                              size: 16,
+                            );
+                          }
+                        }),
                       ),
+
                       TextButton.icon(
                         style: TextButton.styleFrom(
                           backgroundColor: Colors.transparent,

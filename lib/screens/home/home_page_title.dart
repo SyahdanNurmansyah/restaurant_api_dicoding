@@ -9,7 +9,7 @@ class HomePageTitle extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 32),
       child: Text.rich(
         TextSpan(
-          text: 'Temukan ',
+          text: 'Temukan',
           style: TextStyle(
             fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
             height: 1.2,
@@ -22,7 +22,6 @@ class HomePageTitle extends StatelessWidget {
                 color: Colors.green,
                 fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                 fontWeight: FontWeight.w600,
-                fontStyle: FontStyle.italic,
                 height: 1.2,
               ),
             ),

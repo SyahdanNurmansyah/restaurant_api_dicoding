@@ -12,6 +12,7 @@ class CustomerReviewErrorState extends CustomerReviewResultState {
 }
 
 class CustomerReviewLoadedState extends CustomerReviewResultState {
+  final String id;
   final CustomerReviewRequest data;
-  CustomerReviewLoadedState(this.data);
+  CustomerReviewLoadedState(this.id, this.data);
 }
