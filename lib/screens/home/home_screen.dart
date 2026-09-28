@@ -3,11 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:restaurant_api/providers/home/restaurant_list_provider.dart';
 import 'package:restaurant_api/screens/home/headers.dart';
 import 'package:restaurant_api/screens/home/home_page_title.dart';
-import 'package:restaurant_api/screens/home/restaurant_card.dart';
 import 'package:restaurant_api/screens/home/restaurant_list_screen.dart';
 import 'package:restaurant_api/static/Sliver_header_delegate.dart';
-import 'package:restaurant_api/static/navigator_routes.dart';
-import 'package:restaurant_api/static/restaurant_list_result_state.dart';
 import 'package:restaurant_api/widgets/custom_search_bar_widget.dart';
 
 class HomeScreen extends StatefulWidget {

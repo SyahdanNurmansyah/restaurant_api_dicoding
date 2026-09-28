@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:restaurant_api/models/restaurants.dart';
 import 'package:restaurant_api/static/customer_review_request.dart';
 import 'package:restaurant_api/static/restaurant_detail_response.dart';
 import 'package:restaurant_api/static/restaurant_list_response.dart';
@@ -45,6 +46,21 @@ class ApiServices {
       return CustomerReviewRequest.fromJson(jsonDecode(request.body));
     } else {
       throw Exception('Failed to post review');
+    }
+  }
+
+  Future<List<Restaurants>> serchRestaurant(String query) async {
+    final response = await http.get(Uri.parse("$_baseUrl/search?q=$query"));
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+
+      final restaurants = data["restaurants"] as List;
+      return restaurants
+          .map((restaurant) => Restaurants.fromJson(restaurant))
+          .toList();
+    } else {
+      throw Exception('Failed to search restaurant');
     }
   }
 }

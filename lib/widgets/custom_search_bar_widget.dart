@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_api/screens/home/home_page_title.dart';
-import 'package:restaurant_api/static/Sliver_header_delegate.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_api/providers/home/restaurant_list_provider.dart';
 
 class CustomSearchBarWidget extends StatefulWidget {
   final ValueChanged<String> onChanged;
@@ -30,13 +30,16 @@ class _CustomSearchBarState extends State<CustomSearchBarWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: TextFormField(
+              onChanged: (query) {
+                context.read<RestaurantListProvider>().searchRestaurant(query);
+              },
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.search_rounded,
                   color: Colors.grey.shade400,
                 ),
                 labelText: 'Cari Restoran',
-                hintText: 'Cari berdasarkan nama atau lokasi...',
+                hintText: 'Cari berdasarkan nama...',
                 suffixIcon: TextButton(
                   style: TextButton.styleFrom(overlayColor: Colors.transparent),
                   onPressed: () {

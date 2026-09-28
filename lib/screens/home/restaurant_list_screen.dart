@@ -13,10 +13,13 @@ class RestaurantListScreen extends StatelessWidget {
     return Consumer<RestaurantListProvider>(
       builder: (context, value, child) {
         return switch (value.resultState) {
-          RestaurantListLoadingState() => const Center(
-            child: CircularProgressIndicator(
-              color: Colors.green,
-              backgroundColor: Colors.lightGreen,
+          RestaurantListLoadingState() => Padding(
+            padding: const EdgeInsets.all(16),
+            child: const Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
+                backgroundColor: Colors.lightGreen,
+              ),
             ),
           ),
 
