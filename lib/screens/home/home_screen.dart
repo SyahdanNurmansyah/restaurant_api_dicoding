@@ -26,14 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: Headers()),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(child: Headers()),
 
-          SliverToBoxAdapter(child: HomePageTitle()),
-          _customSearchBar(),
-          SliverToBoxAdapter(child: RestaurantListScreen()),
-        ],
+            SliverToBoxAdapter(child: HomePageTitle()),
+            _customSearchBar(),
+            SliverToBoxAdapter(child: RestaurantListScreen()),
+          ],
+        ),
       ),
     );
   }
@@ -43,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
       pinned: true,
       delegate: SliverHeaderDelegate(
         child: CustomSearchBarWidget(onChanged: (value) {}),
-        minHeight: 60,
-        maxHeight: 60,
+        minHeight: 80,
+        maxHeight: 80,
       ),
     );
   }

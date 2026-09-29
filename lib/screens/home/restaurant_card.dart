@@ -35,7 +35,7 @@ class RestaurantCard extends StatelessWidget {
                   ),
                   child: Hero(
                     tag: restaurants.pictureId,
-                    curve: Curves.easeIn,
+                    curve: Curves.easeInOut,
                     child: Image.network(
                       'https://restaurant-api.dicoding.dev/images/small/${restaurants.pictureId}',
                       fit: BoxFit.cover,

@@ -28,7 +28,7 @@ class _CustomSearchBarState extends State<CustomSearchBarWidget> {
         spacing: 8,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             child: TextFormField(
               onChanged: (query) {
                 context.read<RestaurantListProvider>().searchRestaurant(query);
@@ -36,7 +36,7 @@ class _CustomSearchBarState extends State<CustomSearchBarWidget> {
               decoration: InputDecoration(
                 prefixIcon: Icon(
                   Icons.search_rounded,
-                  color: Colors.grey.shade400,
+                  color: Theme.of(context).dividerColor,
                 ),
                 labelText: 'Cari Restoran',
                 hintText: 'Cari berdasarkan nama...',
@@ -52,8 +52,11 @@ class _CustomSearchBarState extends State<CustomSearchBarWidget> {
                   ),
                 ),
 
-                labelStyle: TextStyle(color: Colors.grey.shade600),
-                hintStyle: TextStyle(fontSize: 12, color: Colors.grey.shade400),
+                labelStyle: TextStyle(color: Theme.of(context).disabledColor),
+                hintStyle: TextStyle(
+                  fontSize: 12,
+                  color: Theme.of(context).disabledColor,
+                ),
                 fillColor: Theme.of(context).canvasColor,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -64,7 +67,7 @@ class _CustomSearchBarState extends State<CustomSearchBarWidget> {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Theme.of(context).hoverColor),
+                  borderSide: BorderSide(color: Theme.of(context).dividerColor),
                 ),
               ),
             ),
